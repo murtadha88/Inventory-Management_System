@@ -10,10 +10,13 @@ require('./config/database');
 // Controllers
 const authController = require('./controllers/auth');
 const isSignedIn = require('./middleware/isSignedIn');
+const inventoryController = require('./controllers/inventory');
 
 const app = express();
 // Set the port from environment variable or default to 3000
 const port = process.env.PORT ? process.env.PORT : '3000';
+
+const path = require("path");
 
 // MIDDLEWARE
 
@@ -23,6 +26,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 // Morgan for logging HTTP requests
 app.use(morgan('dev'));
+
+app.use(express.static(path.join(__dirname,"public")));
+
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -42,18 +49,9 @@ app.get('/', async (req, res) => {
 });
 
 app.use('/auth', authController);
-
-// Protected Routes
 app.use(isSignedIn);
+app.use('/users/:userId/inventory', inventoryController);
 
-app.get('/protected', async (req, res) => {
-  if (req.session.user) {
-    res.send(`Welcome to the party ${req.session.user.username}.`);
-  } else {
-    res.sendStatus(404);
-    // res.send('Sorry, no guests allowed.');
-  }
-});
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console

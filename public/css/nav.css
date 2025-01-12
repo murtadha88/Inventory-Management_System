@@ -1,0 +1,26 @@
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #bf0000;
+    padding: 7px 15px;
+}
+
+nav img {
+    height: 60px;
+    width: 60px;
+}
+
+nav .button {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    margin-left: 15px;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+nav .button:hover {
+    background-color: #eeeeee;
+    color: black;
+}

@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="/css/nav.css">
+<nav>
+    <div>
+        <a href="/"><img src="https://i.imgur.com/xqxmhY4.png" alt="Inventra Logo"></a>
+    </div>
+    <div>
+        <% if(user) { %>
+            <a href="/users/<%=user._id%>/inventory" class="button">My Inventory</a>
+            <a href="/auth/sign-out" class="button">Sign Out</a>
+        <% } else { %>
+            <a href="/auth/sign-in" class="button">Sign In</a>
+            <a href="/auth/sign-up" class="button">Sign Up</a>
+        <% } %>
+    </div>
+</nav>

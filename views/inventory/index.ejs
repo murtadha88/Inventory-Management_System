@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/inventoryIndex.css">
+    <title>My inventory</title>
+</head>
+<body>
+    <%- include('../partials/_nav.ejs') %>
+
+    <h1><%=currentUser.companyName%> inventory</h1>
+    <table>
+        <tr>
+            <th>Product Name</th>
+            <th>Product Catagory</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <% inventory.forEach((product) => { %>
+            <tr>
+                <td><%= product.productName %></td>
+                <td><%= product.category %></td>
+                <td><%= product.quantity %></td>
+                <td><%= product.price %></td>
+                <td><img src="https://i.imgur.com/kPz75P7.png" alt="Edit Icon" width="20" height="20"></td>
+                <td><img src="https://i.imgur.com/cg1wHCv.png" alt="Delete Icon" width="20" height="20"></td>
+            </tr>
+        <% }) %>
+    </table> <br>
+    <a href="/users/<%=user._id%>/inventory/new">Add new Product</a>
+</body>
+</html>

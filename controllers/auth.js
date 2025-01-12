@@ -12,15 +12,16 @@ router.get('/sign-up', async (req, res) => {
 
 router.post('/sign-up', async (req, res) => {
   // grab the values from the req body
-  const username = req.body.username;
+  const companyName = req.body.companyName;
+  const email = req.body.email;
   const password = req.body.password;
   const confirmPassword = req.body.confirmPassword;
   // Check if the user already exists
-  const existingUser = await User.findOne({ username });
+  const existingUser = await User.findOne({ companyName });
 
   // if the user exists,then dont bother doing anything, just send a message to the browser
   if (existingUser) {
-    return res.send('Username is taken');
+    return res.send('Company Name is taken');
   }
   // verify that the password matches
   if (password !== confirmPassword) {
@@ -30,12 +31,12 @@ router.post('/sign-up', async (req, res) => {
   // create the user in the database
   // -b make the password secure
   const hashPassword = auth.encryptPassword(password);
-  const payload = { username, password: hashPassword };
+  const payload = { companyName, email,password: hashPassword };
 
   const newUser = await User.create(payload);
   // sign person in and redirect to home page
   req.session.user = {
-    username: newUser.username,
+    companyName: newUser.companyName,
     _id: newUser._id,
   };
 
@@ -50,10 +51,10 @@ router.get('/sign-in', async (req, res) => {
 });
 
 router.post('/sign-in', async (req, res) => {
-  const username = req.body.username;
+  const companyName = req.body.companyName;
   const password = req.body.password;
   // find a user from the username they filled out
-  const user = await User.findOne({ username });
+  const user = await User.findOne({ companyName });
   // if the user doesnt exist, send an error msg
   if (!user) {
     return res.send('Login failed, please try again');
@@ -68,7 +69,7 @@ router.post('/sign-in', async (req, res) => {
   // else sign them in
   // create a session cookie
   req.session.user = {
-    username: user.username,
+    companyName: user.companyName,
     _id: user._id,
   };
 

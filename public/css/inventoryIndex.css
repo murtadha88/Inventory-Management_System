@@ -1,0 +1,41 @@
+h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #bf0000;
+    text-align: center;
+    margin: 20px 0;
+    padding: 10px;
+    border-bottom: 2px solid black;
+    text-transform: capitalize;
+}
+
+table {
+    width: 95%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    font-size: 16px;
+    text-align: left;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 10px 15px;
+}
+
+th {
+    background-color: #bf0000;
+    color: white;
+}
+
+tr:hover {
+    background-color: #ffd6d6;
+}
+
+img {
+    cursor: pointer; 
+}
+
+td img {
+    display: block;
+    margin: 0 auto;
+}

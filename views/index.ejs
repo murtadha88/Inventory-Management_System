@@ -5,19 +5,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css">
     <title>Home Page</title>
   </head>
   <body>
+    <%- include('./partials/_nav.ejs') %>
+
     <% if (user) { %>
-      <h1>Welcome to the app, <%= user.username %>!</h1>
+      <h1>Welcome to Inventra, <%= user.companyName %>!</h1>
       <a href="/auth/sign-out">Sign out</a>
       <% } else { %>
-      <h1>Welcome to the app, guest.</h1>
+      <h1>Welcome to Inventra, guest.</h1>
       <p>
         <a href="/auth/sign-up">Sign up</a> or <a href="/auth/sign-in">sign in</a>.
       </p>
       <% } %>
-
-      <p><a href="/protected">Get into the VIP Users Only lounge!</a></p>
   </body>
 </html>
