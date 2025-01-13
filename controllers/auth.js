@@ -13,6 +13,7 @@ router.get('/sign-up', async (req, res) => {
 router.post('/sign-up', async (req, res) => {
   // grab the values from the req body
   const companyName = req.body.companyName;
+  const industry = req.body.industry;
   const email = req.body.email;
   const password = req.body.password;
   const confirmPassword = req.body.confirmPassword;
@@ -31,12 +32,13 @@ router.post('/sign-up', async (req, res) => {
   // create the user in the database
   // -b make the password secure
   const hashPassword = auth.encryptPassword(password);
-  const payload = { companyName, email,password: hashPassword };
+  const payload = { companyName,industry, email,password: hashPassword };
 
   const newUser = await User.create(payload);
   // sign person in and redirect to home page
   req.session.user = {
     companyName: newUser.companyName,
+    industry: user.industry,
     _id: newUser._id,
   };
 
@@ -70,6 +72,7 @@ router.post('/sign-in', async (req, res) => {
   // create a session cookie
   req.session.user = {
     companyName: user.companyName,
+    industry: user.industry,
     _id: user._id,
   };
 

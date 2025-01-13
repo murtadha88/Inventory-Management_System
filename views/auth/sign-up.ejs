@@ -4,26 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/form.css">
     <title>Sign Up</title>
   </head>
   <body>
     <%- include('../partials/_nav.ejs') %>
 
-    <h1>Create a new account!</h1>
-    <form action="/auth/sign-up" method="POST">
-      <label for="companyName">Company Name:</label>
-      <input type="text" name="companyName" id="companyName" /> <br>
+    <h1>Sign-up</h1>
+    <form action="/auth/sign-up" method="POST" >
+      <label for="companyName">Company Name</label>
+      <input type="text" name="companyName" placeholder="Enter company name"/> <br>
 
-      <label for="email">Email:</label>
-      <input type="text" name="email" id="email" /> <br>
+      <label for="industry">Company Industry</label>
+      <select name="industry">
+        <option value="" disabled selected hidden>Select your company industry</option>
+        <option value="technology">Technology</option>
+        <option value="fashion">Fashion & Apparel</option>
+        <option value="food">Food & Beverage</option>
+        <option value="furniture">Home & Furniture</option>
+      </select>
 
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password" /> <br>
+      <label for="email">Email</label>
+      <input type="text" name="email" placeholder="Enter company email"/> <br>
 
-      <label for="confirmPassword">Confirm Password:</label>
-      <input type="password" name="confirmPassword" id="confirmPassword" /> <br>
+      <label for="password">Password</label>
+      <input type="password" name="password" placeholder="Enter your password"/> <br>
 
-      <button type="submit">Sign up</button>
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" name="confirmPassword" placeholder="Confirm your password" /> <br>
+
+      <button type="submit">Sign- up</button>
     </form>
   </body>
 </html>

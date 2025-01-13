@@ -24,6 +24,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  industry: {
+    type: String,
+    required: true,
+    enum: ["technology","fashion","food","furniture"],
+  },
   email: {
     type: String,
     required: true,

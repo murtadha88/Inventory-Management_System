@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Edit <%=product.productName%></title>
+</head>
+<body>
+    <%- include('../partials/_nav.ejs') %>
+
+    <h1>Edit <%=product.productName%></h1>
+    <form action="/users/<%=user._id%>/inventory/<%=product._id%>?_method=put" method="POST">
+        <label for="productName">Product Name</label>
+        <input type="text" name="productName" value="<%=product.productName%>" required> <br>
+
+        <label for="category">Category</label>
+        <input type="text" name="category" value="<%=product.category%>" required> <br>
+
+        <label for="quantity">Quantity</label>
+        <input type="number" name="quantity" value="<%=product.quantity%>" required> <br>
+
+        <label for="price">Price</label>
+        <input type="number" name="price" value="<%=product.price%>" required> <br>
+
+        <button type="submit">Edit</button>
+    </form>
+</body>
+</html>

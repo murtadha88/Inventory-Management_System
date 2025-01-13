@@ -2,26 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/form.css">
     <title>Add new Product</title>
 </head>
 <body>
     <%- include('../partials/_nav.ejs') %>
+    <%let industry = currentUser.industry%>
+    <% console.log(industry)%>
 
     <h1>Add new Product</h1>
     <form action="/users/<%=user._id%>/inventory" method="POST">
-        <label for="productName">Product Name:</label>
-        <input type="text" name="productName" required> <br>
+        <label for="productName">Product Name</label>
+        <input type="text" name="productName" placeholder="Enter product name" required> <br>
 
-        <label for="category">Category:</label>
-        <input type="text" name="category" required> <br>
+        <label for="category">Category</label>
+        <select name="category">
+            <option value="" disabled selected hidden>Select product category</option>
 
-        <label for="quantity">Quantity:</label>
-        <input type="number" name="quantity" required> <br>
+            <% if(industry === "technology") { %>
+                <option value="Laptops & Computers">Laptops & Computers</option>
+                <option value="Mobile Phones & Tablets">Mobile Phones & Tablets</option>
+                <option value="Smart Home Devices">Smart Home Devices</option>
+                <option value="Networking Equipment">Networking Equipment</option>
+                <option value="Software & Applications">Software & Applications</option>
+                <option value="Wearables">Wearables</option>
+            <%} else if(industry === "fashion") { %>
+                <option value="Men Clothing">Men's Clothing</option>
+                <option value="Women Clothing">Women's Clothing</option>
+                <option value="Kids Wear">Kids Wear</option>
+                <option value="Footwear">Footwear</option>
+                <option value="Accessories">Accessories</option>
+                <option value="Jewelry">Jewelry</option>
+            <%} else if(industry === "food") { %>
+                <option value="Fresh Produce">Fresh Produce</option>
+                <option value="Packaged Foods">Packaged Foods</option>
+                <option value="Beverages">Beverages</option>
+                <option value="Dairy Products">Dairy Products</option>
+                <option value="Frozen Foods">Frozen Foods</option>
+                <option value="Baked Goods">Baked Goods</option>
+            <%} else if(industry === "furniture") { %>
+                <option value="Living Room Furniture">Living Room Furniture</option>
+                <option value="Bedroom Furniture">Bedroom Furniture</option>
+                <option value="Kitchen & Dining Furniture">Kitchen & Dining Furniture</option>
+                <option value="Home Decor">Home Decor</option>
+                <option value="Storage Solutions">Storage Solutions</option>
+                <option value="Outdoor Furniture">Outdoor Furniture</option>
+            <%} %>
+        </select>
 
-        <label for="price">Price:</label>
-        <input type="number" name="price" required> <br>
+        <label for="quantity">Quantity</label>
+        <input type="number" name="quantity" placeholder="Enter product quantity" required> <br>
+
+        <label for="price">Price</label>
+        <input type="number" name="price" placeholder="Enter product price" required> <br>
 
         <button type="submit">Add</button>
     </form>
