@@ -15,4 +15,4 @@ Inventra is an Inventory Management System designed to help businesses efficient
 * **EJS**
 
 # <h2> Furture Plan
-In the future, We plan to enhance Inventra by introducing features such as customizable dashboards, and improved user interfaces to make inventory management more intuitive and efficient. These upgrades aim to provide businesses with a streamlined system tailored to their evolving needs, as will as growing to support more industries.
+In the future, We plan to enhance Inventra by introducing features such as filter the product base on category, customizable dashboards, and improved user interfaces to make inventory management more intuitive and efficient. These upgrades aim to provide businesses with a streamlined system tailored to their evolving needs, as will as growing to support more industries.
