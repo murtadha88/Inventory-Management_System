@@ -1,24 +1,43 @@
-<!-- views/index.ejs -->
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/style.css">
-    <title>Home Page</title>
-  </head>
-  <body>
-    <%- include('./partials/_nav.ejs') %>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/index.css">
+  <title>Home Page</title>
+</head>
+
+<body>
+  <%- include('./partials/_nav.ejs') %>
 
     <% if (user) { %>
       <h1>Welcome to Inventra, <%= user.companyName %>!</h1>
-      <a href="/auth/sign-out">Sign out</a>
+
+      <h2>About INVENTRA</h2>
+      <p>Inventra is an Inventory Management System designed to help businesses efficiently manage their stock,
+        streamline product categorization, and track inventory levels. It supports essential functions like product
+        addition, updates, categorization by industry, and secure user authentication for enhanced management control.
+        The system aims to provide a seamless experience for inventory tracking and management, catering to various
+        industries such as technology, fashion, food, and furniture.</p>
+
+      <a href="/users/<%=user._id%>/inventory" class="button2">My Inventory</a> <br>
+      <a href="/auth/sign-out" class="button2">Sign out</a>
       <% } else { %>
-      <h1>Welcome to Inventra, guest.</h1>
-      <p>
-        <a href="/auth/sign-up">Sign up</a> or <a href="/auth/sign-in">sign in</a>.
-      </p>
-      <% } %>
-  </body>
+        <h1>Welcome to Inventra, guest.</h1>
+
+        <h2>About INVENTRA</h2>
+        <p>Inventra is an Inventory Management System designed to help businesses efficiently manage their stock,
+          streamline product categorization, and track inventory levels. It supports essential functions like product
+          addition, updates, categorization by industry, and secure user authentication for enhanced management control.
+          The system aims to provide a seamless experience for inventory tracking and management, catering to various
+          industries such as technology, fashion, food, and furniture. </p>
+
+        <a href="/auth/sign-up" class="button2">Sign up</a> <br>
+        <a href="/auth/sign-in" class="button2">Sign in</a>.
+
+        <% } %>
+</body>
+
 </html>
