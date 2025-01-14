@@ -10,7 +10,6 @@
 <body>
     <%- include('../partials/_nav.ejs') %>
     <%let industry = currentUser.industry%>
-    <% console.log(industry)%>
 
     <h1>Add new Product</h1>
     <form action="/users/<%=user._id%>/inventory" method="POST">
@@ -19,7 +18,7 @@
 
         <label for="category">Category</label>
         <select name="category">
-            <option value="" disabled selected hidden>Select product category</option>
+            <option value="" disabled selected hidden><span id="default">Select product category</span></option>
 
             <% if(industry === "technology") { %>
                 <option value="Laptops & Computers">Laptops & Computers</option>

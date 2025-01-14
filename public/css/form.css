@@ -24,7 +24,11 @@ label {
     margin: 10px 0 5px;
 }
 
-input {
+#default {
+    color: rgb(111, 111, 111);
+}
+
+input,select {
     width: 80%;
     padding: 8px;
     margin-bottom: 15px;

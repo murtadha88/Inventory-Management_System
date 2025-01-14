@@ -48,6 +48,7 @@ router.get("/:productId/edit", async (req,res) => {
         const currentUser = await User.findById(req.session.user._id);
         const product = await currentUser.inventory.id(req.params.productId);
         res.render("inventory/edit.ejs", {
+            currentUser,
             product,
         });
         

@@ -38,7 +38,6 @@ router.post('/sign-up', async (req, res) => {
   // sign person in and redirect to home page
   req.session.user = {
     companyName: newUser.companyName,
-    industry: user.industry,
     _id: newUser._id,
   };
 
@@ -72,7 +71,6 @@ router.post('/sign-in', async (req, res) => {
   // create a session cookie
   req.session.user = {
     companyName: user.companyName,
-    industry: user.industry,
     _id: user._id,
   };
 
